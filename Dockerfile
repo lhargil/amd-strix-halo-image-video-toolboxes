@@ -15,15 +15,17 @@ RUN printf 'source /opt/venv/bin/activate\n' > /etc/profile.d/venv.sh
 RUN python -m pip install --upgrade pip setuptools wheel
 
 # ROCm + PyTorch (TheRock, include torchaudio for resolver; remove later)
-ARG ROCM_INDEX=https://rocm.nightlies.amd.com/v2/gfx1151/
-RUN python -m pip install --index-url ${ROCM_INDEX} 'rocm[libraries,devel]' && \
-    python -m pip install --index-url ${ROCM_INDEX} \
-      torch torchvision torchaudio==2.7.1a0 pytorch-triton-rocm numpy
+RUN python -m pip install \
+  --index-url https://rocm.nightlies.amd.com/v2-staging/gfx1151/ \
+  --pre torch torchaudio torchvision
 
 WORKDIR /opt
 
-# ComfyUI - Installing full clone to enable self-updating with Comfy-Manager
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI 
+# Pin specific transformers version
+RUN python -m pip install transformers==4.56.2
+
+# ComfyUI
+RUN git clone --depth=1 https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI 
 WORKDIR /opt/ComfyUI
 RUN python -m pip install -r requirements.txt && \
     python -m pip install --prefer-binary \
@@ -35,15 +37,6 @@ ENV UV_LINK_MODE="copy"
 WORKDIR /opt
 RUN git clone --depth=1 https://github.com/kyuz0/qwen-image-studio /opt/qwen-image-studio && \
     python -m pip install -r /opt/qwen-image-studio/requirements.txt
-
-# Flash-Attention
-ENV FLASH_ATTENTION_TRITON_AMD_ENABLE="TRUE"
-
-RUN git clone https://github.com/ROCm/flash-attention.git &&\ 
-    cd flash-attention &&\
-    git checkout main_perf &&\
-    python setup.py install && \
-    cd /opt && rm -rf /opt/flash-attention
 
 # Wan Video Studio
 RUN git clone --depth=1 https://github.com/kyuz0/wan-video-studio /opt/wan-video-studio && \
@@ -58,7 +51,7 @@ RUN chmod -R a+rwX /opt && chmod +x /opt/*.sh || true && \
     python -m pip cache purge || true && rm -rf /root/.cache/pip || true && \
     dnf clean all && rm -rf /var/cache/dnf/*
 
-# ROCm/Triton env (exports TRITON_HIP_* and LD_LIBRARY_PATH; also FA enable)
+# Enable torch TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL
 COPY scripts/01-rocm-env-for-triton.sh /etc/profile.d/01-rocm-env-for-triton.sh
 
 # Helper scripts (ComfyUI-only)
