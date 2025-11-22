@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-NAME="strix-halo-image-video"
-IMAGE="docker.io/kyuz0/amd-strix-halo-image-video:latest"
+NAME="lg-strix-halo-image-video"
+IMAGE="localhost/amd-strix-halo-image-video:latest"
 REPO="${IMAGE%:*}"  # docker.io/kyuz0/amd-strix-halo-image-video
 
 # Get local + remote digests (needs skopeo + jq)
