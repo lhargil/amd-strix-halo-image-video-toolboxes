@@ -2,7 +2,7 @@
 set -euo pipefail
 
 NAME="lg-strix-halo-image-video"
-IMAGE="localhost/amd-strix-halo-image-video:latest"
+IMAGE="docker.io/lahrgil/amd-strix-halo-image-video:latest"
 REPO="${IMAGE%:*}"  # docker.io/kyuz0/amd-strix-halo-image-video
 
 # Get local + remote digests (needs skopeo + jq)
