@@ -75,6 +75,7 @@ This toolbox provides a ROCm nightly stack for Strix Halo (gfx1151), built from 
 - **AOTriton** = _Ahead-Of-Time compiled Triton attention kernels_. They’re prebuilt inside the wheel, so there’s **no runtime JIT**, no extra `triton` package, and no first-run compilation delay.
 
 
+
 ---
 
 ## 4. Components (What’s Included)
