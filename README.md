@@ -1,12 +1,12 @@
 ```
-███████╗████████╗██████╗ ██╗██╗  ██╗      ██╗  ██╗ █████╗ ██╗      ██████╗ 
+███████╗████████╗██████╗ ██╗██╗  ██╗      ██╗  ██╗ █████╗ ██╗      ██████╗
 ██╔════╝╚══██╔══╝██╔══██╗██║╚██╗██╔╝      ██║  ██║██╔══██╗██║     ██╔═══██╗
 ███████╗   ██║   ██████╔╝██║ ╚███╔╝       ███████║███████║██║     ██║   ██║
 ╚════██║   ██║   ██╔══██╗██║ ██╔██╗       ██╔══██║██╔══██║██║     ██║   ██║
 ███████║   ██║   ██║  ██║██║██╔╝ ██╗      ██║  ██║██║  ██║███████╗╚██████╔╝
-╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝      ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝ 
+╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝      ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝
 
-                         I M A G E   &   V I D E O                        
+                         I M A G E   &   V I D E O
 ```
 
 # AMD Strix Halo — Image & Video Toolbox
@@ -19,32 +19,32 @@ A Fedora **toolbox** image with a full **ROCm environment** for **image & video 
 
 ## Table of Contents
 
-- [1. Overview](#1-overview)  
-- [2. Watch the YouTube Video](#2-watch-the-youtube-video)  
-- [3. 🚨 Updates — 2025-11-15](#3--updates--2025-11-15)   
-- [4. Components (What’s Included)](#4-components-whats-included)  
-- [5. Creating the Toolbox](#5-creating-the-toolbox)  
-  - [5.1. Enter & Update](#51-enter--update)  
-  - [5.2. Ubuntu Users and Toolkits](#52-ubuntu-users-and-toolkits)  
-- [6. Unified Memory Setup](#6-unified-memory-setup)  
-- [7. Qwen Image Studio](#7-qwen-image-studio)  
-  - [7.1. Download Models](#71-download-models)  
-  - [7.2. How to Start](#72-how-to-start)  
-  - [7.3. Paths & Persistence](#73-paths--persistence)  
-- [8. WAN 2.2](#8-wan-22)  
-  - [8.1. Download Models](#81-download-models)  
-  - [8.2. Video Generation Examples](#82-video-generation-examples)  
-    - [8.2.1. Text-to-Video (T2V, Lightning)](#821-text-to-video-t2v-lightning)  
-    - [8.2.2. Image-to-Video (I2V, Lightning)](#822-image-to-video-i2v-lightning)  
-    - [8.2.3. Speech-to-Video (S2V, 14B)](#823-speech-to-video-s2v-14b)  
-    - [8.2.4. TI2V 5B Checkpoint (not recommended)](#824-ti2v-5b-checkpoint-not-recommended)  
-  - [8.3. Notes](#83-notes)  
-- [9. ComfyUI](#9-comfyui)  
-  - [9.1. Setup (ComfyUI only)](#91-setup-comfyui-only)  
-  - [9.2. Run](#92-run)  
-  - [9.3. Running Image/Video Workflows in ComfyUI](#93-running-imagevideo-workflows-in-comfyui)  
-- [10. Stability and Performance Notes](#10-stability-and-performance-notes)  
-- [11. Credits & Links](#11-credits--links)  
+- [1. Overview](#1-overview)
+- [2. Watch the YouTube Video](#2-watch-the-youtube-video)
+- [3. 🚨 Updates — 2025-11-15](#3--updates--2025-11-15)
+- [4. Components (What’s Included)](#4-components-whats-included)
+- [5. Creating the Toolbox](#5-creating-the-toolbox)
+  - [5.1. Enter & Update](#51-enter--update)
+  - [5.2. Ubuntu Users and Toolkits](#52-ubuntu-users-and-toolkits)
+- [6. Unified Memory Setup](#6-unified-memory-setup)
+- [7. Qwen Image Studio](#7-qwen-image-studio)
+  - [7.1. Download Models](#71-download-models)
+  - [7.2. How to Start](#72-how-to-start)
+  - [7.3. Paths & Persistence](#73-paths--persistence)
+- [8. WAN 2.2](#8-wan-22)
+  - [8.1. Download Models](#81-download-models)
+  - [8.2. Video Generation Examples](#82-video-generation-examples)
+    - [8.2.1. Text-to-Video (T2V, Lightning)](#821-text-to-video-t2v-lightning)
+    - [8.2.2. Image-to-Video (I2V, Lightning)](#822-image-to-video-i2v-lightning)
+    - [8.2.3. Speech-to-Video (S2V, 14B)](#823-speech-to-video-s2v-14b)
+    - [8.2.4. TI2V 5B Checkpoint (not recommended)](#824-ti2v-5b-checkpoint-not-recommended)
+  - [8.3. Notes](#83-notes)
+- [9. ComfyUI](#9-comfyui)
+  - [9.1. Setup (ComfyUI only)](#91-setup-comfyui-only)
+  - [9.2. Run](#92-run)
+  - [9.3. Running Image/Video Workflows in ComfyUI](#93-running-imagevideo-workflows-in-comfyui)
+- [10. Stability and Performance Notes](#10-stability-and-performance-notes)
+- [11. Credits & Links](#11-credits--links)
 
 ---
 
@@ -64,8 +64,8 @@ This toolbox provides a ROCm nightly stack for Strix Halo (gfx1151), built from 
 
 ### ⚡ Torch + AOTriton Wheels
 
-* Shipping the latest **PyTorch ROCm wheels from [TheRock](https://github.com/ROCm/TheRock)**, built with **AOTriton** enabled for Strix Halo (gfx1151).
-* **AOTriton** = *Ahead-Of-Time compiled Triton attention kernels*. They’re prebuilt inside the wheel, so there’s **no runtime JIT**, no extra `triton` package, and no first-run compilation delay.
+- Shipping the latest **PyTorch ROCm wheels from [TheRock](https://github.com/ROCm/TheRock)**, built with **AOTriton** enabled for Strix Halo (gfx1151).
+- **AOTriton** = _Ahead-Of-Time compiled Triton attention kernels_. They’re prebuilt inside the wheel, so there’s **no runtime JIT**, no extra `triton` package, and no first-run compilation delay.
 
 ---
 
@@ -94,10 +94,10 @@ toolbox create strix-halo-image-video \
 
 **Explanation**
 
-* `--device /dev/dri` → graphics & video devices
-* `--device /dev/kfd` → required for ROCm compute
-* `--group-add video, render` → ensures user has GPU access
-* `--security-opt seccomp=unconfined` → avoids syscall sandbox issues with GPUs
+- `--device /dev/dri` → graphics & video devices
+- `--device /dev/kfd` → required for ROCm compute
+- `--group-add video, render` → ensures user has GPU access
+- `--security-opt seccomp=unconfined` → avoids syscall sandbox issues with GPUs
 
 Enter the toolbox:
 
@@ -107,9 +107,9 @@ toolbox enter strix-halo-image-video
 
 Inside, your prompt looks normal but you’re in the container with:
 
-* Full ROCm stack
-* All tools under `/opt`
-* Shared `$HOME` (so models and outputs are persistent)
+- Full ROCm stack
+- All tools under `/opt`
+- Shared `$HOME` (so models and outputs are persistent)
 
 ### 5.1. Enter & Update
 
@@ -188,9 +188,9 @@ cd /opt/qwen-image-studio/
 python /opt/qwen-image-studio/qwen-image-mps.py download all
 ```
 
-* Models go to `~/.cache/huggingface/hub/` (outside toolbox)
-* Available: `qwen-image`, `qwen-image-edit`, `lightning-lora-8`, `lightning-lora-4`
-* LoRA adapters require the base models first
+- Models go to `~/.cache/huggingface/hub/` (outside toolbox)
+- Available: `qwen-image`, `qwen-image-edit`, `lightning-lora-8`, `lightning-lora-4`
+- LoRA adapters require the base models first
 
 Outputs and job state are kept in `~/.qwen-image-studio/` (HOME, outside the toolbox) so they persist across updates or rebuilds.
 
@@ -241,13 +241,13 @@ HF_HUB_ENABLE_HF_TRANSFER=1 hf download lightx2v/Wan2.2-Lightning --local-dir ~/
 
 **Full Checkpoints (needed alongside Lightning)**
 
-* **Text-to-Video (T2V):**
+- **Text-to-Video (T2V):**
 
 ```bash
 HF_HUB_ENABLE_HF_TRANSFER=1 hf download Wan-AI/Wan2.2-T2V-A14B --local-dir ~/Wan2.2-T2V-A14B
 ```
 
-* **Image-to-Video (I2V):**
+- **Image-to-Video (I2V):**
 
 ```bash
 HF_HUB_ENABLE_HF_TRANSFER=1 hf download Wan-AI/Wan2.2-I2V-A14B --local-dir ~/Wan2.2-I2V-A14B
@@ -270,9 +270,9 @@ python generate.py \
   --save_file ~/output.mp4
 ```
 
-* `--size "832*480"` → reduced resolution for better runtime on Strix Halo
-* `--frame_num 73` → required to be `4n+1`, \~3 sec video in \~30 min runtime
-* `--lora_dir` → points to the Lightning LoRA adapter
+- `--size "832*480"` → reduced resolution for better runtime on Strix Halo
+- `--frame_num 73` → required to be `4n+1`, \~3 sec video in \~30 min runtime
+- `--lora_dir` → points to the Lightning LoRA adapter
 
 #### 8.2.2. Image-to-Video (I2V, Lightning)
 
@@ -313,9 +313,9 @@ python generate.py \
   --save_file ~/output.mp4
 ```
 
-* No Lightning LoRA adapters are available yet for S2V.
-* This means inference requires \~40 steps, making generation **slower** than T2V/I2V with Lightning.
-* Still, it enables synchronized **audio + image + prompt → video** workflows.
+- No Lightning LoRA adapters are available yet for S2V.
+- This means inference requires \~40 steps, making generation **slower** than T2V/I2V with Lightning.
+- Still, it enables synchronized **audio + image + prompt → video** workflows.
 
 #### 8.2.4. TI2V 5B Checkpoint (not recommended)
 
@@ -335,10 +335,10 @@ python generate.py --task ti2v-5B --size 1280*704 \
 
 ### 8.3. Notes
 
-* Lightning adapters (LoRA) drastically reduce generation time (4 steps).
-* Use smaller resolutions (`832*480`) to balance quality and runtime on Strix Halo.
-* Keep all model files under HOME (`~/Wan2.2-*`) so they survive toolbox updates.
-* Official Lightning repo: [https://huggingface.co/lightx2v/Wan2.2-Lightning](https://huggingface.co/lightx2v/Wan2.2-Lightning)
+- Lightning adapters (LoRA) drastically reduce generation time (4 steps).
+- Use smaller resolutions (`832*480`) to balance quality and runtime on Strix Halo.
+- Keep all model files under HOME (`~/Wan2.2-*`) so they survive toolbox updates.
+- Official Lightning repo: [https://huggingface.co/lightx2v/Wan2.2-Lightning](https://huggingface.co/lightx2v/Wan2.2-Lightning)
 
 ## 9. ComfyUI
 
@@ -365,7 +365,7 @@ It will also set up essential ComfyUI extensions.
 
 ### 9.2. Run
 
-The `start_comfy_ui` helper script starts ComfyUI with the `--base-path` set to your `~/comfy-ui` directory, where all extensions, models, outputs and other user data will be stored, surviving toolbox refreshes. 
+The `start_comfy_ui` helper script starts ComfyUI with the `--base-path` set to your `~/comfy-ui` directory, where all extensions, models, outputs and other user data will be stored, surviving toolbox refreshes.
 
 Start ComfyUI inside the toolbox:
 
@@ -377,14 +377,14 @@ Alias details:
 
 ```bash
 cd /opt/ComfyUI
-python main.py --port 8000 --base-directory $HOME/comfy-ui --disable-mmap
+python main.py --port 8000 --base-directory $HOME/comfy-ui --disable-mmap --fp32-vae
 ```
 
 > You will see an error message for missing `torchaudio`: this is **temporarily** removed as its presence causes ComfyUI to crash on boot.
 
-* Outputs appear under `~/comfy-ui/output` in your HOME.
-* Default ComfyUI port is 8188, but using `--port 8000` aligns it with Qwen Image Studio.
-* Remote over SSH:
+- Outputs appear under `~/comfy-ui/output` in your HOME.
+- Default ComfyUI port is 8188, but using `--port 8000` aligns it with Qwen Image Studio.
+- Remote over SSH:
 
 ```bash
 ssh -L 8000:localhost:8000 user@your-strix-box
@@ -398,8 +398,8 @@ Upstream project: [https://github.com/comfyanonymous/ComfyUI](https://github.com
 
 You can load ready-made workflow files directly into ComfyUI:
 
-* Qwen Image example: [https://comfyanonymous.github.io/ComfyUI\_examples/qwen\_image/](https://comfyanonymous.github.io/ComfyUI_examples/qwen_image/)
-* Wan2.2 example: [https://comfyanonymous.github.io/ComfyUI\_examples/wan22/](https://comfyanonymous.github.io/ComfyUI_examples/wan22/)
+- Qwen Image example: [https://comfyanonymous.github.io/ComfyUI_examples/qwen_image/](https://comfyanonymous.github.io/ComfyUI_examples/qwen_image/)
+- Wan2.2 example: [https://comfyanonymous.github.io/ComfyUI_examples/wan22/](https://comfyanonymous.github.io/ComfyUI_examples/wan22/)
 
 ---
 
@@ -428,10 +428,10 @@ AMD is actively working on these and there are new patches currently being teste
 
 ## 11. Credits & Links
 
-* Qwen Image (original CLI): [https://github.com/ivanfioravanti/qwen-image-mps](https://github.com/ivanfioravanti/qwen-image-mps)
-* ComfyUI: [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)
-* WAN 2.2: [https://github.com/Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2)
-* Toolbox (Fedora): [https://containertoolbx.org/](https://containertoolbx.org/)
+- Qwen Image (original CLI): [https://github.com/ivanfioravanti/qwen-image-mps](https://github.com/ivanfioravanti/qwen-image-mps)
+- ComfyUI: [https://github.com/comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+- WAN 2.2: [https://github.com/Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2)
+- Toolbox (Fedora): [https://containertoolbx.org/](https://containertoolbx.org/)
 
 ---
 
